@@ -1,0 +1,12 @@
+<div class="home responsive-inline-padding padding-block-2">
+    <div class="grid columns-3 gap-20">
+        <div class="card" *ngFor="let art of arts">
+            <div>{{art.Name}}</div>
+            <img [src]="art.Image.data.attributes.url" alt="">
+        </div>
+    </div>
+</div>
+<div *ngIf="isSpinning" class="ring">
+    Loading
+    <span></span>
+</div>

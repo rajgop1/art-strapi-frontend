@@ -1,3 +1,27 @@
-<div>
-  Hey there
-</div>
+<header>
+  <nav class="flex-row align-center space-between responsive-inline-padding padding-block-1">
+    <div class="img-container">
+      <img src="assets/images/logo.png" alt="">
+    </div>
+    <div class="right flex-row gap-20 body-text">
+      <div class="pointer weight-600" >
+        Home
+      </div>
+      <div class="pointer weight-600" >
+        Collections
+      </div>
+      <div class="pointer weight-600" >
+        <button mat-raised-button color="primary">
+          Create Sketch
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- to be moved -->
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+
+</footer>

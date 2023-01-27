@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./global.scss");
+// @for $i from 1 through 100 {
+//     $step: 5;
+//     .padding-#{$i * $step} {
+//       padding: #{$i * $step}px;
+//     }
+//   }
+
+:root {
+    --accent: #FFC82F;
+    --primary: #111B71;
+    --primary-black: #1F2222;
+    --primary-black-07: rgba(31, 34, 34, 0.7);
+    --primary-black-04: rgba(0, 0, 0, 0.4);
+    --primary-white: #F8F8FA;
+    --disabled-btn-color: rgba(17, 27, 113, 0.40);
+    --default-white: #FFF;
+    --gray-e7: #E7E8EB;
+    --active-link-backcolor: rgb(246, 247, 246);
+    --card-backcolor: #FAFAFA;
+    --primary-yellow: rgba(255, 200, 47, 0.2);
+    --primary-green: rgba(52, 168, 83, 0.1);
+    --pending-color: #F99D1C;
+    --sold-color: #34A852;
+    --white-08: rgba(255, 255, 255, 0.8);
+    --green-recommended: #15764E;
+    --green-back-recommended: #E5F1E9;
+  }
+@for $i from 1 through 100 {
+    .padding-inline-#{$i}{
+      padding-inline: #{$i}rem;
+    }
+    .padding-block-#{$i}{
+      padding-block: #{$i}rem;
+    }
+    .gap{
+        gap: #{$i}px;
+    }
+  }
+@for $i from 1 through 10 {
+    .columns-#{$i}{
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+  html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+  }
