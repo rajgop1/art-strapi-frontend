@@ -1,17 +1,23 @@
 <header>
-  <nav class="flex-row align-center space-between responsive-inline-padding padding-block-1">
-    <div class="img-container">
-      <img src="assets/images/logo.png" alt="">
+  <nav class="flex-row align-center space-between padding-inline-4 padding-block-1">
+    <div class="img-container pointer">
+      <img src="assets/images/logo-removebg.png" alt="">
     </div>
-    <div class="right flex-row gap-20 body-text">
-      <div class="pointer weight-600" >
+    <div color-dir color="accent" class="right flex-row gap-20 body-text align-center">
+      <div class="pointer weight-600 link" routerLink="/" routerLinkActive="active">
         Home
       </div>
-      <div class="pointer weight-600" >
+      <div class="pointer weight-600 link" routerLink="/create-art" routerLinkActive="active">
         Collections
       </div>
-      <div class="pointer weight-600" >
-        <button mat-raised-button color="primary">
+      <div class="pointer weight-600 " routerLink="/cart" matTooltip="Cart">
+        <div class="img-container">
+          <img src="assets/images/cart.svg"/>
+        </div>
+        <!-- Cart -->
+      </div>
+      <div class="pointer weight-600 ">
+        <button class="weight-500 buy-art">
           Create Sketch
         </button>
       </div>

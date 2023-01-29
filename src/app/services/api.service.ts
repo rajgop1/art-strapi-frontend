@@ -13,8 +13,13 @@ export class ApiService {
 
   }
   getArt() {
-    return this.http.get(`${this.host}art-collections${this.addFlag}`, {
-      headers: headerConfig
-    })
+    return this.http.get(`${this.host}art-collections${this.addFlag}`)
   }
+  getSizeOptions(){
+    return this.http.get(`${this.host}size-options`)
+  }
+  getFaceOptions(){
+    return this.http.get(`${this.host}face-options`)
+  }
+
 }

@@ -20,9 +20,9 @@ export class ColorDirective {
     }
     if (this.backcolor) {
       if (CSS.supports("background-color", this.backcolor)) {
-        this.elementRef.nativeElement.style.backgroundColor = this.backcolor;
+        this.elementRef.nativeElement.style.background = this.backcolor;
       } else if (CSS.supports("background-color", `var(--${this.backcolor})`)) {
-        this.elementRef.nativeElement.style.backgroundColor = this.backcolor;
+        this.elementRef.nativeElement.style.background = this.backcolor;
       }
     }
   }

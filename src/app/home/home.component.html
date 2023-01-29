@@ -1,12 +1,137 @@
-<div class="home responsive-inline-padding padding-block-2">
-    <div class="grid columns-3 gap-20">
-        <div class="card" *ngFor="let art of arts">
-            <div>{{art.Name}}</div>
-            <img [src]="art.Image.data.attributes.url" alt="">
+<div class="home-third padding-inline-responsive padding-block-4 padding-top-8" color-dir backcolor="#FAFAFA">
+    <div class="flex-row-responsive gap-80">
+        <div class="left flex-column gap-30">
+            <div class="main-img">
+                <div class="img-container">
+                    <img src="assets/images/art1.png" alt="">
+                </div>
+            </div>
+            <div class="other-img">
+                <div class="grid-container">
+                    <div class="img-container">
+                        <img src="assets/images/art2.png" alt="">
+                    </div>
+                    <div class="img-container">
+                        <img src="assets/images/johnny.png" alt="">
+                    </div>
+                    <div class="img-container">
+                        <img src="assets/images/ele.png" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="right flex-column gap-30">
+            <div class="flex-column">
+                <h2 class="heading-style-four">Handmade Pencil Sketch</h2>
+                <div color-dir color="primary" class="heading-style-six weight-600">&#8377;1,499.00 - &#8377;2,999.00</div>
+            </div>
+            <div class="flex-column gap-10">
+                <h3 class="heading-style-six weight-700">Want a <span color-dir color="pending-color"> gift</span> for your special ones?</h3>
+                <div class="flex-column gap-10">
+                    <p class="medium-text weight-600">Gift them a handmade sketch, it tells how much time you have invested to present a gift for them. It brings them close to your heart and they will remember you everytime they see your present.</p>
+                    <p class="medium-text weight-600">Best gift for 
+                        <span class="weight-700" color-dir color="primary">Birthdays, Anniversary, Mother’s day, Friendship day, and on any special occasion.</span></p>
+                </div>
+            </div>
+            <input style="display: none;" type="file" id="file-upload" accept="image/*"/>
+            <div class="flex-column gap-15" id="drop-area">
+                <label for="file-upload"  class="flex-column gap-10 upload-image-container pointer">
+                    <div class="flex-row gap-20 align-center justify-center">
+                        <div class="img-container ">
+                            <img src="assets/images/upload-cloud.svg" alt="">
+                        </div>
+                        <h4 class="heading-style-six weight-700" color-dir color="primary" >Upload or Drag Image</h4>
+                    </div>
+                </label>
+                <div class="flex-column gap-10">
+                    <h4 class="body-text weight-700">Select Size:</h4>
+                    <div class="flex-row gap-10 size-container">
+                        <span *ngFor="let size of sizes" class="size pointer" (click)="onSelectSize(size)" [class.active-size]="selectedSize?.Size==size?.Size">{{size?.Size}}</span>
+                        <!-- <span class="size pointer" (click)="onSelectSize('A2')" [class.active-size]="selectedSize==='A2'">A2</span>
+                        <span class="size pointer" (click)="onSelectSize('A3')" [class.active-size]="selectedSize==='A3'">A3</span>
+                        <span class="size pointer" (click)="onSelectSize('A4')" [class.active-size]="selectedSize==='A4'">A4</span> -->
+                    </div>
+                </div>
+                <div class="flex-column gap-10">
+                    <h4 class="body-text weight-700">Number of Faces:</h4>
+                    <div class="flex-row gap-10 face-container">
+                        <span *ngFor="let face of faces" class="face pointer" (click)="onSelectFace(face)" [class.active-face]="selectedFace?.Face===face?.Face">{{face?.Face}} Face</span>
+                        <!-- <span class="face pointer" (click)="onSelectFace(1)" [class.active-face]="selectedFace===1">1 Face</span>
+                        <span class="face pointer" (click)="onSelectFace(2)" [class.active-face]="selectedFace===2">2 Faces</span>
+                        <span class="face pointer" (click)="onSelectFace(3)" [class.active-face]="selectedFace===3">3 Faces</span> -->
+                    </div>
+                </div>
+                <div class="flex-column gap-10">
+                    <h4 class="body-text weight-700">Do you want to add Frame?</h4>
+                    <div class="flex-row frame-container gap-10">
+                        <div class="frame pointer" (click)="isFrameSelected=true"  [class.active-frame]="isFrameSelected">Yes</div>
+                        <div class="frame pointer" (click)="isFrameSelected=false" [class.active-frame]="!isFrameSelected">No</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="home padding-inline-responsive padding-block-4 padding-top-8">
+    <div class="flex-row-responsive gap-50 space-between align-center text-align-center ">
+        <h1 class="fuggles text-style-one weight-600" color-dir color="" >
+            Sketch'<span color-dir color="accent">in</span> with  <br/> <span  color-dir color="primary" class="weight-600">
+                Naval
+            </span>
+        </h1>
+        <div class="hero-image">
+            <img src="assets/images/sketch.svg" alt="">
+        </div>
+        <!-- <iframe src="https://giphy.com/embed/QLj1DlO0Qe2Ws" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p> -->
+    </div>
+</div>
+<div class="home-second padding-inline-responsive padding-block-4" color-dir backcolor="back-color">
+    <div class="flex-column gap-3 padding-bottom-4">
+        <h2 class="text-align-center heading-style-four weight-600" color-dir color="accent">My Art Collection</h2>
+        <p class="text-align-center body-text " color-dir color="primary-white">Get Handmade Sketches at affordable price</p>
+    </div>
+    <div class="home-second-container">
+        <div class="grid columns-3 gap-40 padding-block-2">
+            <div class="card flex-column " *ngFor="let art of arts" (click)="onCardSelect()">
+                <div class="img-container">
+                    <img [src]="art.Image.data.attributes.url" alt="">
+                </div>
+                <div class="discount" color-dir color="accent">-{{art.Discount}}% </div>
+                <div  class="card-content flex-column gap-10 text-align-center justify-center align-center">
+                    <div class="text-align-center weight-600 heading-style-five" color-dir color="primary-white" >{{art.Name}}</div>
+                    <div class="flex-row icon-container">
+                        <div class="flex-row justify-center align-center gap-10 full-width">
+                            <div class="img-container ">
+                                <img src="assets/images/cart-1.svg" alt="" matTooltip="Cart"  >
+                            </div>
+                            <div class="img-container " (click)="onMagnifyClick(art.Image.data.attributes.url)">
+                                <img src="assets/images/magnify-2.svg" alt="" matTooltip="Magnify">
+                            </div>
+                            <a *ngIf="art.InstagramLink" class="img-container " [href]="art.InstagramLink" target="_blank">
+                                <img src="assets/images/instagram.svg" alt="" matTooltip="Instagram link">
+                            </a>
+                            <a *ngIf="art.YoutubeLink" class="img-container " [href]="art.YoutubeLink" target="_blank">
+                                
+                                <img src="assets/images/youtube.svg" alt="" matTooltip="Youtube Link">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="selectedMagnifiedImage" class="home-magnified-container flex-column align-center justify-center" >
+    <div class="img-container pointer" matTooltip="Close" (click)="onMagnifyClick('',true)">
+        <img src="assets/images/close.svg" alt="">
+    </div>
+    <div class="home-magnified-content">
+        <img [src]="selectedMagnifiedImage" alt="">
     </div>
 </div>
 <div *ngIf="isSpinning" class="ring">
     Loading
-    <span></span>
+    <span class="spinner-inside"></span>
 </div>
