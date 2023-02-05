@@ -7,7 +7,8 @@ Bearer 7f1890a8b4e2a81ec0ab4b144d9a6872d0efd509153840dc5dd88b4512753f70809a5368f
   providedIn: 'root'
 })
 export class ApiService {
-  host = "https://art-strapi.onrender.com/api/"
+  // host = "https://art-strapi.onrender.com/api/"
+  host = "https://sketching-with-naval.onrender.com/"
   addFlag=`?populate=*`
   constructor(public http: HttpClient) {
 

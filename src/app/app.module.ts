@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateArtComponent } from './create-art/create-art.component';
 import { HeaderInterceptor } from './header.interceptor';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HeaderInterceptor } from './header.interceptor';
     AppRoutingModule,
     HttpClientModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ScullyLibModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi:true}

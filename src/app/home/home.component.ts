@@ -23,6 +23,11 @@ export class HomeComponent implements OnInit {
     this.selectedFace=face
   }
   
+  uploadFile(event:Event){
+    const ev:any = event.target
+    const file = ev.files[0]
+    console.log(file)
+  }
 
   getOptions(){
     this.api.getSizeOptions().subscribe({
@@ -213,6 +218,31 @@ export class HomeComponent implements OnInit {
       }
     }
   ]
+  dragOverHandler(ev:any) {
+    console.log('File(s) in drop zone');
+  
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  }
+  dropHandler(event:DragEvent){
+    console.log(event)
+    if (event.dataTransfer?.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      
+      [...event.dataTransfer.items].forEach((item, i) => {
+        // If dropped items aren't files, reject them
+        if (item.kind === 'file') {
+          const file = item.getAsFile();
+          console.log(`… file[${i}].name = ${file?.name}`);
+        }
+      });
+    } else {
+      // Use DataTransfer interface to access the file(s)
+      event.dataTransfer && [...event.dataTransfer.files].forEach((file, i) => {
+        console.log(`… file[${i}].name = ${file.name}`);
+      });
+    }
+  }
   @ViewChild('card') card!:ElementRef
   constructor(private api: ApiService) {
     this.getArtDetails()

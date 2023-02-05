@@ -33,9 +33,9 @@
                         <span class="weight-700" color-dir color="primary">Birthdays, Anniversary, Mother’s day, Friendship day, and on any special occasion.</span></p>
                 </div>
             </div>
-            <input style="display: none;" type="file" id="file-upload" accept="image/*"/>
-            <div class="flex-column gap-15" id="drop-area">
-                <label for="file-upload"  class="flex-column gap-10 upload-image-container pointer">
+            <input (change)="uploadFile($event)" style="display: none;" type="file" id="file-upload" accept="image/*"/>
+            <div class="flex-column gap-15" id="drop-area" ondrop="dropHandler($event)" ondragover="dragOverHandler($event)">
+                <label  *ngIf="!image" for="file-upload"  class="flex-column gap-10 upload-image-container pointer">
                     <div class="flex-row gap-20 align-center justify-center">
                         <div class="img-container ">
                             <img src="assets/images/upload-cloud.svg" alt="">
