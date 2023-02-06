@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { ApolloService } from '../services/apollo.service';
 
 @Component({
   selector: 'app-home',
@@ -29,29 +30,7 @@ export class HomeComponent implements OnInit {
     console.log(file)
   }
 
-  getOptions(){
-    this.api.getSizeOptions().subscribe({
-      next: (data:any)=>{
-        this.sizes =  data?.data.map((size:any)=>size.attributes)
-        console.log(data)
-
-      },
-      error: (err)=>{
-        console.log(err)
-      }
-    })
-    this.api.getFaceOptions().subscribe({
-      next: (data:any)=>{
-        this.faces = data?.data.map((size:any)=>size.attributes).sort((prev:any,next:any)=>prev.Face-next.Face)
-        console.log(data)
-      },
-      error: (err)=>{
-        console.log(err)
-      }
-    })
-
-  }
-
+  
   arts: any
   isSpinning: boolean = false
   dummy = [
@@ -244,32 +223,28 @@ export class HomeComponent implements OnInit {
     }
   }
   @ViewChild('card') card!:ElementRef
-  constructor(private api: ApiService) {
-    this.getArtDetails()
+  constructor(private api: ApiService, private apollo: ApolloService) {
     window.addEventListener("scroll", (e) => {
       console.log(window.screenTop)
     })
   }
   selectedMagnifiedImage:any
   ngOnInit(): void {
-    this.getArtDetails()
-    this.getOptions()
-  }
-  getArtDetails() {
-    this.isSpinning = true
-    this.api.getArt().subscribe({
-      next: (res: any) => {
-        this.isSpinning = false
-        // console.log(res)
-        this.arts = res.data.map((val: any) => val.attributes)
-        console.log(this.arts)
-      },
-      error: (err) => {
-        this.isSpinning = false
-        console.log(err)
-      }
+    this.apollo.getFaceOptions().subscribe((result:any) => {
+      console.log(result)
+      this.faces = result.data.faceOptions.data.map((val:any)=>val.attributes).sort((prev:any,next:any)=>prev.Face-next.Face)
     })
+    this.apollo.getSizeOptions().subscribe((result:any) => {
+      console.log(result)
+      this.sizes = result.data.sizeOptions.data.map((val:any)=>val.attributes)
+    })
+    this.apollo.getArt().subscribe((result:any) => {
+      console.log(result)
+      this.arts = result.data.artCollections.data.map((val:any)=>val.attributes)
+    })
+    
   }
+  
   onCardSelect(){
   }
   onMagnifyClick(img:string='', close=false){

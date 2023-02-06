@@ -239,3 +239,13 @@
 }
 
 .container {}
+@media screen and (max-width: 768px) {
+    .home-third{
+        .left-right-container{
+            flex-direction: column-reverse;
+            .left,.right{
+                width: 100%;
+            }
+        }
+    }
+}

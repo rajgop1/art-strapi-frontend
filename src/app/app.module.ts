@@ -11,6 +11,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateArtComponent } from './create-art/create-art.component';
 import { HeaderInterceptor } from './header.interceptor';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     HttpClientModule,
     MatButtonModule,
     MatTooltipModule,
-    ScullyLibModule
+    ScullyLibModule,
+    GraphQLModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi:true}
